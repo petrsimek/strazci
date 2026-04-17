@@ -927,7 +927,7 @@ function renderPubTabs() {
   const container = document.getElementById('pubTabs');
   var totalEpisodes = Object.keys(DATA.episodes).length;
   let html = '<button class="pub-tab pub-tab-all' + (currentPub === 'all' ? ' active' : '') +
-    '" data-pub="all"><span class="pub-tab-label">Všechny<br>díly</span>' +
+    '" data-pub="all"><span class="pub-tab-label">Všechny<br>verze<br>dílů</span>' +
     '<span class="pub-tab-count">' + totalEpisodes + ' dílů</span></button>';
   const sortedPubs = Object.entries(DATA.publications)
     .sort((a, b) => (a[1].year || 0) - (b[1].year || 0));
@@ -1054,6 +1054,8 @@ function renderEpisodes() {
   if (currentPub !== 'all') {
     var pubName = DATA.publications[currentPub] ? DATA.publications[currentPub].name : currentPub;
     filterParts.push('publikace ' + pubName);
+  } else {
+    filterParts.push('všechny verze dílů');
   }
   if (artistFilter && DATA.artists[artistFilter]) {
     filterParts.push('kreslíř ' + DATA.artists[artistFilter].name);
@@ -1061,10 +1063,7 @@ function renderEpisodes() {
   if (customFilter) filterParts.push('vybrané epizody');
   if (searchQuery) filterParts.push('hledání „' + searchQuery + '"');
 
-  var titleHtml = 'Seznam epizod';
-  if (filterParts.length > 0) {
-    titleHtml += '<span class="episodes-title-filter">– dle filtru: ' + escHtml(filterParts.join(', ')) + '</span>';
-  }
+  var titleHtml = 'Seznam epizod<span class="episodes-title-filter">– dle filtru: ' + escHtml(filterParts.join(', ')) + '</span>';
   title.innerHTML = titleHtml;
 
   if (currentPub === 'all') {
