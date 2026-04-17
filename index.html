@@ -223,10 +223,17 @@ header .subtitle { color: var(--text-muted); font-size: 1rem; font-weight: 300; 
 .facts-section {
   padding: 1rem 0 0.5rem;
 }
-.facts-title {
+.facts-title, .episodes-title {
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+.episodes-title-filter {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
 }
 .fact-card {
   font-size: 0.95rem;
@@ -613,6 +620,7 @@ header .subtitle { color: var(--text-muted); font-size: 1rem; font-weight: 300; 
         <div class="artist-filters" id="artistFilters"></div>
       </div>
     </div>
+    <div class="episodes-title" id="episodesTitle"></div>
     <div class="stats" id="stats"></div>
     <div id="episodeList"></div>
   </main>
@@ -1039,6 +1047,25 @@ function renderEpisodes() {
   const items = filterBySearch(getEpisodesForView());
   const container = document.getElementById('episodeList');
   const stats = document.getElementById('stats');
+  const title = document.getElementById('episodesTitle');
+
+  // Build filter description
+  var filterParts = [];
+  if (currentPub !== 'all') {
+    var pubName = DATA.publications[currentPub] ? DATA.publications[currentPub].name : currentPub;
+    filterParts.push('publikace ' + pubName);
+  }
+  if (artistFilter && DATA.artists[artistFilter]) {
+    filterParts.push('kreslíř ' + DATA.artists[artistFilter].name);
+  }
+  if (customFilter) filterParts.push('vybrané epizody');
+  if (searchQuery) filterParts.push('hledání „' + searchQuery + '"');
+
+  var titleHtml = 'Seznam epizod';
+  if (filterParts.length > 0) {
+    titleHtml += '<span class="episodes-title-filter">– dle filtru: ' + escHtml(filterParts.join(', ')) + '</span>';
+  }
+  title.innerHTML = titleHtml;
 
   if (currentPub === 'all') {
     var filtered = searchQuery || artistFilter || customFilter;
