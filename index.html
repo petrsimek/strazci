@@ -1066,15 +1066,7 @@ function renderEpisodes() {
   var titleHtml = 'Seznam epizod<span class="episodes-title-filter">– dle filtru: ' + escHtml(filterParts.join(', ')) + '</span>';
   title.innerHTML = titleHtml;
 
-  if (currentPub === 'all') {
-    var filtered = searchQuery || artistFilter || customFilter;
-    stats.textContent = items.length + ' epizod' + (filtered ? ' (filtrováno)' : '');
-  } else {
-    const pub = DATA.publications[currentPub];
-    var filtered = searchQuery || artistFilter || customFilter;
-    stats.textContent = pub.name + ': ' + items.length + ' díl' + (items.length === 1 ? '' : 'ů') +
-      (filtered ? ' (filtrováno)' : '');
-  }
+  stats.textContent = items.length + ' díl' + (items.length === 1 ? '' : (items.length >= 2 && items.length <= 4 ? 'y' : 'ů'));
 
   container.innerHTML = items.map((item, idx) => renderEpisodeItem(item, idx)).join('');
 
