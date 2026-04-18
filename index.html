@@ -229,6 +229,13 @@ header .subtitle { color: var(--text-muted); font-size: 1rem; font-weight: 300; 
   margin-bottom: 0.5rem;
   margin-top: 1rem;
 }
+.about-link {
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent);
+}
+.about-link:hover { border-bottom-style: solid; }
 .memorandum {
   margin-top: 3rem;
   padding: 1rem 1.25rem;
@@ -620,6 +627,7 @@ header .subtitle { color: var(--text-muted); font-size: 1rem; font-weight: 300; 
       <img class="header-img" src="strazci_heads.png" alt="Strážci – postavy">
     </div>
     <div class="subtitle">Přehled epizod komiksového seriálu Strážci a jeho verzí v průběhu let od roku 1967 dodnes</div>
+    <div class="subtitle"><a href="#memorandum" class="about-link">O projektu</a></div>
   </div>
 </header>
 
@@ -638,8 +646,8 @@ header .subtitle { color: var(--text-muted); font-size: 1rem; font-weight: 300; 
     <div class="episodes-title" id="episodesTitle"></div>
     <div class="stats" id="stats"></div>
     <div id="episodeList"></div>
-    <div class="memorandum">
-      <strong>O projektu:</strong> Toto je amatérský projekt bez komerčního záměru, vzniklý z osobního zájmu. V dětství mě nezasáhly Rychlé šípy, ale právě Strážci – navíc v období na přelomu komunismu a demokracie, což samo o sobě přidává sérii zajímavou historickou vrstvu. Veškerá autorská práva ke komiksu, jeho příběhům, postavám, kresbám a textům patří jejich původním autorům, dědicům a vydavatelům. Tento web slouží pouze k nekomerčnímu dokumentačnímu a studijnímu účelu. Pokud najdete chybu nebo máte doplnění, napište mi na <a href="mailto:petr.simek@gmail.com">petr.simek@gmail.com</a>.
+    <div class="memorandum" id="memorandum">
+      <strong>O projektu:</strong> Toto je amatérský projekt bez komerčního záměru, vzniklý z osobního zájmu, protože v dětství mě nezasáhly Rychlé šípy, ale časopis ABC a v něm klub Strážců – navíc v období na přelomu osmdesátých a devadesátých let, takže v období těch nejzvláštnějších změn v tomto komiksovém díle. Veškerá autorská práva ke komiksu, jeho příběhům, postavám, kresbám a textům patří jejich původním autorům, dědicům a vydavatelům. Tento web slouží pouze k nekomerčnímu dokumentačnímu a studijnímu účelu. Pokud najdete chybu nebo máte nějaké doplnění, napište mi na <a href="mailto:petr.simek@gmail.com">petr.simek@gmail.com</a>. Děkuji! Petr Šimek
     </div>
   </main>
 </div>
